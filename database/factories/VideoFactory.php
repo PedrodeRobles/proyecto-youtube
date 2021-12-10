@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VideoFactory extends Factory
@@ -14,7 +15,11 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id' => User::factory(),
+            'title'   => $this->faker->sentence(),
+            'iframe'  => $this->faker->url(),
+            'like'    => rand(1, 200),
+            'description' => $this->faker->text(500),
         ];
     }
 }

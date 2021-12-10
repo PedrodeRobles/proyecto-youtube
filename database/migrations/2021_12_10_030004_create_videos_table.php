@@ -15,7 +15,17 @@ class CreateVideosTable extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('user_id')->unsigned();
+
+            $table->string('title');
+            $table->text('iframe');
+            $table->bigInteger('like');
+            $table->text('description')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
