@@ -56,8 +56,12 @@ class VideoController extends Controller
         return redirect()->route('videos.edit', $video);
     }
 
-    public function destroy(Video $video)
+    public function destroy(Video $video, Request $request)
     {
+        if ($request->user()->id != $video->user_id) {
+            abort(403);
+        }
+
         $video->delete();
 
         return redirect()->route('videos.index');
