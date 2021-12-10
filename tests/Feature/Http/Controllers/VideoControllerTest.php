@@ -85,6 +85,24 @@ class VideoControllerTest extends TestCase
             ->assertSessionHasErrors('title', 'iframe');
     }
 
+    public function test_update_policy()
+    {
+        $user = User::factory()->create();    // id = 1
+        $video = Video::factory()->create();  // user_id = 2
+
+        $data = [
+            'title'   => $this->faker->sentence(),
+            'iframe'  => $this->faker->url(),
+            'description' => $this->faker->text(500),
+        ];
+
+
+        $this  
+            ->actingAs($user)
+            ->put("videos/$video->id", $data)
+            ->assertStatus(403);
+    }
+
     public function test_destroy()
     {
         $user = User::factory()->create();                            // id = 1
