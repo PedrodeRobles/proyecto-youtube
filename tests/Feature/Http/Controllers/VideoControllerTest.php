@@ -117,4 +117,15 @@ class VideoControllerTest extends TestCase
             'id' => $video->id
         ]);
     }
+
+    public function test_destroy_policy()
+    {
+        $user = User::factory()->create();    // id = 1
+        $video = Video::factory()->create();  // user_id = 2
+
+        $this
+            ->actingAs($user)
+            ->delete("videos/$video->id")
+            ->assertStatus(403);
+    }
 }
