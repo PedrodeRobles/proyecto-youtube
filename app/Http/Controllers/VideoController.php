@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
+use App\Http\Requests\VideoRequest;
 
 class VideoController extends Controller
 {
@@ -19,10 +20,10 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'iframe' => 'required'
-        // ]);
+        $request->validate([
+            'title' => 'required',
+            'iframe' => 'required',
+        ]);
 
         $request->user()->videos()->create($request->all());
 
@@ -41,6 +42,11 @@ class VideoController extends Controller
 
     public function update(Request $request, Video $video)
     {
+        $request->validate([
+            'title' => 'required',
+            'iframe' => 'required',
+        ]);
+
         $video->update($request->all());
 
         return redirect()->route('videos.edit', $video);

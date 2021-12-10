@@ -50,7 +50,7 @@ class VideoControllerTest extends TestCase
             ->actingAs($user)
             ->post('videos', [])
             ->assertStatus(302)
-            ->assertSessionHasErrors('title', 'iframe', 'description');
+            ->assertSessionHasErrors('title', 'iframe');
     }
 
     public function test_update()
@@ -82,6 +82,6 @@ class VideoControllerTest extends TestCase
             ->actingAs($user)
             ->put("videos/$video->id", [])
             ->assertStatus(302)
-            ->assertSessionHasErrors('title', 'iframe', 'description');
+            ->assertSessionHasErrors('title', 'iframe');
     }
 }
