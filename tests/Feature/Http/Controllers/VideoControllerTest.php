@@ -84,4 +84,17 @@ class VideoControllerTest extends TestCase
             ->assertStatus(302)
             ->assertSessionHasErrors('title', 'iframe');
     }
+
+    public function test_destroy()
+    {
+        $user = User::factory()->create();                            // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $this
+            ->actingAs($user)
+            ->delete("videos/$video->id")
+            ->assertRedirect('videos');
+
+        $this->assertDatabaseMissing('videos', $video->id);
+    }
 }
