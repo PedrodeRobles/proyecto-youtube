@@ -41,7 +41,9 @@ class VideoController extends Controller
 
     public function update(Request $request, Video $video)
     {
-        //
+        $video->update($request->all());
+
+        return redirect()->route('videos.edit', $video);
     }
 
     public function destroy(Video $video)

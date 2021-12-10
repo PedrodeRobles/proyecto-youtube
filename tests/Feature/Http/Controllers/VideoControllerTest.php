@@ -57,7 +57,7 @@ class VideoControllerTest extends TestCase
         $this  
             ->actingAs($user)
             ->put("videos/$video->id", $data)
-            ->assertRedirect("videos/$video->id");
+            ->assertRedirect("videos/$video->id/edit");
 
         $this->assertDatabaseHas('videos', $data);
     }
