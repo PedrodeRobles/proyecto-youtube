@@ -95,6 +95,8 @@ class VideoControllerTest extends TestCase
             ->delete("videos/$video->id")
             ->assertRedirect('videos');
 
-        $this->assertDatabaseMissing('videos', $video->id);
+        $this->assertDatabaseMissing('videos', [
+            'id' => $video->id
+        ]);
     }
 }
