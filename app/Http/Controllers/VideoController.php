@@ -47,6 +47,10 @@ class VideoController extends Controller
             'iframe' => 'required',
         ]);
 
+        if ($request->user()->id != $video->user_id) {
+            abort(403);
+        }
+
         $video->update($request->all());
 
         return redirect()->route('videos.edit', $video);
