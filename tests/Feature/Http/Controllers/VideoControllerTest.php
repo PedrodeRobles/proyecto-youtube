@@ -24,6 +24,33 @@ class VideoControllerTest extends TestCase
         $this->post('videos', [])->assertRedirect('login');    // sotore
     }
 
+    public function test_index_empty()
+    {
+        $user = User::factory()->create();   // id = 1
+        Video::factory()->create();          // user_id = 2
+
+        $this
+            ->actingAs($user)
+            ->get('videos')
+            ->assertStatus(200)
+            ->assertSee('No hay videos subidos');
+    }
+
+    public function test_index_with_data()
+    {
+        $user = User::factory()->create();                   // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $this
+            ->actingAs($user)
+            ->get('videos')
+            ->assertStatus(200)
+            ->assertSee([
+                $video->title,
+                $video->iframe,
+            ]);
+    }
+
     public function test_store()
     {
         $data = [
