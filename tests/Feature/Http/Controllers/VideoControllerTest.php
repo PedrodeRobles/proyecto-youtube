@@ -42,6 +42,17 @@ class VideoControllerTest extends TestCase
         $this->assertDatabaseHas('videos', $data);
     }
 
+    public function test_validate_store()
+    {
+        $user = User::factory()->create();
+
+        $this  
+            ->actingAs($user)
+            ->post('videos', [])
+            ->assertStatus(302)
+            ->assertSessionHasErrors('title', 'iframe', 'description');
+    }
+
     public function test_update()
     {
         $user = User::factory()->create();                            // id = 1
@@ -60,5 +71,17 @@ class VideoControllerTest extends TestCase
             ->assertRedirect("videos/$video->id/edit");
 
         $this->assertDatabaseHas('videos', $data);
+    }
+
+    public function test_validate_update()
+    {
+        $user = User::factory()->create();                            // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $this  
+            ->actingAs($user)
+            ->put("videos/$video->id", [])
+            ->assertStatus(302)
+            ->assertSessionHasErrors('title', 'iframe', 'description');
     }
 }
