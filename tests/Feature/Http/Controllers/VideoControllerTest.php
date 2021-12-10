@@ -41,4 +41,24 @@ class VideoControllerTest extends TestCase
 
         $this->assertDatabaseHas('videos', $data);
     }
+
+    public function test_update()
+    {
+        $user = User::factory()->create();                            // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $data = [
+            'title'   => $this->faker->sentence(),
+            'iframe'  => $this->faker->url(),
+            'description' => $this->faker->text(500),
+        ];
+
+
+        $this  
+            ->actingAs($user)
+            ->put("videos/$video->id", $data)
+            ->assertRedirect("videos/$video->id");
+
+        $this->assertDatabaseHas('videos', $data);
+    }
 }
