@@ -8,9 +8,11 @@ use App\Http\Requests\VideoRequest;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('videos.index', [
+            'videos' => $request->user()->videos
+        ]);
     }
 
     public function create()
