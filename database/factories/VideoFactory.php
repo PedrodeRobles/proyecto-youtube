@@ -18,7 +18,6 @@ class VideoFactory extends Factory
             'user_id' => User::factory(),
             'title'   => $this->faker->sentence(),
             'iframe'  => $this->faker->url(),
-            'like'    => rand(1, 200),
             'description' => $this->faker->text(500),
         ];
     }

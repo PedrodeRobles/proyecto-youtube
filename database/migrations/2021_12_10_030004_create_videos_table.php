@@ -20,7 +20,6 @@ class CreateVideosTable extends Migration
 
             $table->string('title');
             $table->text('iframe');
-            $table->bigInteger('like');
             $table->text('description')->nullable();
 
             $table->timestamps();

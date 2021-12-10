@@ -19,7 +19,14 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'title' => 'required',
+        //     'iframe' => 'required'
+        // ]);
+
+        $request->user()->videos()->create($request->all());
+
+        return redirect()->route('videos.index');
     }
 
     public function show(Video $video)
