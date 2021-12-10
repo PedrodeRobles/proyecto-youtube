@@ -51,6 +51,17 @@ class VideoControllerTest extends TestCase
             ]);
     }
 
+    public function test_show()
+    {
+        $user = User::factory()->create();                            // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $this  
+            ->actingAs($user)
+            ->get("videos/$video->id")
+            ->assertStatus(200);
+    }
+
     public function test_store()
     {
         $data = [
