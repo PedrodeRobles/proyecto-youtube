@@ -41,9 +41,13 @@ class VideoController extends Controller
         return view('videos.show', $video);
     }
 
-    public function edit(Video $video)
+    public function edit(Video $video, Request $request)
     {
-        //
+        if ($request->user()->id != $video->user_id) {
+            abort(403);
+        }
+
+        return view('videos.edit', compact('video'));
     }
 
     public function update(Request $request, Video $video)
