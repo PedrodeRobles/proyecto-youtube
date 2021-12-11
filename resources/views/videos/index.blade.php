@@ -7,6 +7,9 @@
         <title>Youtube</title>
 
     </head>
+    <header>
+        
+    </header>
     <body>
         @forelse ($videos as $video)
             {{ $video->title }}
