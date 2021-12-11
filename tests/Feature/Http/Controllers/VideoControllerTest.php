@@ -177,4 +177,28 @@ class VideoControllerTest extends TestCase
             ->delete("videos/$video->id")
             ->assertStatus(403);
     }
+
+    public function test_edit()
+    {
+        $user = User::factory()->create();                            // id = 1
+        $video = Video::factory()->create(['user_id' => $user->id]);  // user_id = 1
+
+        $this
+            ->actingAs($user)
+            ->get("videos/$video->id/edit")
+            ->assertStatus(200)
+            ->assertSee($video->title)
+            ->assertSee($video->iframe);
+    }
+
+    public function test_edit_policy()
+    {
+        $user = User::factory()->create();    // id = 1
+        $video = Video::factory()->create();  // user_id = 2
+
+        $this
+            ->actingAs($user)
+            ->get("videos/$video->id/edit")
+            ->assertStatus(403);
+    }
 }
