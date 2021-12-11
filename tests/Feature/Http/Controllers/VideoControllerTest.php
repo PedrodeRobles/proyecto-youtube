@@ -201,4 +201,14 @@ class VideoControllerTest extends TestCase
             ->get("videos/$video->id/edit")
             ->assertStatus(403);
     }
+
+    public function test_create()
+    {
+        $user = User::factory()->create();
+
+        $this
+            ->actingAs($user)
+            ->get('videos/create')
+            ->assertStatus(200);
+    }
 }
