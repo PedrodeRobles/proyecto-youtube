@@ -23,11 +23,16 @@
     <body class="bg-gray-900">
         @forelse ($videos as $video)
 
-            {{-- Usuario --}}
-            <div class="bg-gray-800">
-                <div class="flex items-center ml-8 py-8 mb-8 w-full">
+            {{-- Usuario y boton de subir video--}}
+            <div class="flex justify-around items-center w-full bg-gray-800 mb-8">
+                <div class="flex items-center py-8">
                     <img class="rounded-full w-13 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
                     <p class="text-white">{{ $video->user->name }}</p>
+                </div>
+                <div>
+                    <button class="py-2 px-4 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg">
+                        <a href="{{ route('videos.create') }}">Subir video</a>
+                    </button>
                 </div>
             </div>
             
