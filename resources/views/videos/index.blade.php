@@ -39,9 +39,14 @@
         {{-- Videos subidos --}}
         <div class="grid grid-cols-4">
             @forelse ($videos as $video)
-                <div class="w-64 h-48 bg-yellow-600 mx-auto">
-                    {{-- {!! $video->iframe !!} --}}
-                </div>
+                    <div class="border-2 border-gray-800 mx-auto mb-10 hover:bg-gray-800">
+                        <a href="{{ route('videos.show', $video) }}">
+                            <img src="/img/descarga.jpg" class="w-80 h-44 object-cover">
+                            <div class="text-white font-bold p-2">
+                                {{ $video->title }}
+                            </div>
+                        </a>
+                    </div>
             @empty
                 <p>No hay videos subidos</p>
             @endforelse
