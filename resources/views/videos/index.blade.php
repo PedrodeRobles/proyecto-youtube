@@ -21,52 +21,30 @@
         </div>
     </header>
     <body class="bg-gray-900">
-        @forelse ($videos as $video)
+        
 
-            {{-- Usuario y boton de subir video--}}
-            <div class="flex justify-around items-center w-full bg-gray-800 mb-8">
-                <div class="flex items-center py-8">
-                    <img class="rounded-full w-13 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
-                    <p class="text-white">{{ $video->user->name }}</p>
-                </div>
-                <div>
-                    <button class="py-2 px-4 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg">
-                        <a href="{{ route('videos.create') }}">Subir video</a>
-                    </button>
-                </div>
+        {{-- Usuario y boton de subir video--}}
+        <div class="flex justify-around items-center w-full bg-gray-800 mb-8">
+            <div class="flex items-center py-8">
+                <img class="rounded-full w-13 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
+                {{-- <p class="text-white">{{ $video->user->name }}</p> --}}
             </div>
+            <div>
+                <button class="py-2 px-4 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg">
+                    <a href="{{ route('videos.create') }}">Subir video</a>
+                </button>
+            </div>
+        </div>
             
-            {{-- Videos subidos --}}
-            <div class="w-10/12 mx-auto">
-                <div class="grid grid-cols-4 gap-6">
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
-                    <div class="bg-red-600">
-                        {{ $video->title }}
-                        {{ $video->iframe }}
-                    </div>
+        {{-- Videos subidos --}}
+        <div class="grid grid-cols-4">
+            @forelse ($videos as $video)
+                <div class="w-64 h-48 bg-yellow-600 mx-auto">
+                    {{-- {!! $video->iframe !!} --}}
                 </div>
-            </div>
-        @empty
-            <p>No hay videos subidos</p>
-        @endforelse
+            @empty
+                <p>No hay videos subidos</p>
+            @endforelse
+        </div>
     </body>
 </html>

@@ -21,15 +21,22 @@
         </div>
     </header>
     <body class="bg-gray-900">
-        <div class="w-1/2 h-1/3 m-auto mt-12 bg-gray-200">
+        <div class="w-1/2 h-96 m-auto mt-12 bg-gray-600">
             <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
-                <div class="w-10/12 px-8 mx-10 bg-indigo-500">                        <div>
+                <div class="w-10/12 mx-10 bg-indigo-500">                        
+                    <div class="pt-6">
                         <p>Título *</p>
                         <input type="text" name="title" required class="w-full">
                     </div>
-                    <div>
+                    <div class="pt-6">
                         <p>Contenido embebido *</p>
                         <textarea name="iframe" rows="4" class="w-full"></textarea>
+                    </div>
+                    <div>
+                        @csrf
+                        <button class="mt-4 px-4 py-2 bg-green-600 hover:bg-green-500 rounded-md">
+                            Subir video
+                        </button>
                     </div>
                 </div>
             </form>
