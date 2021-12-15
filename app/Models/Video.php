@@ -14,7 +14,7 @@ class Video extends Model
     protected $fillable = [
         'user_id',
         'title',
-        'foto',
+        'image',
         'iframe',
     ];
 
@@ -23,10 +23,10 @@ class Video extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getGetFotoAttribute()
+    public function getGetImageAttribute()
     {
-        if ($this->foto) {
-            return url("storage/$this->foto");
+        if ($this->image) {
+            return url("storage/$this->image");
         }
     }
 }

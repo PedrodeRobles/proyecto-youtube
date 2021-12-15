@@ -31,7 +31,7 @@
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Miniatura *</p>
-                        <input type="file" name="foto" required class="w-full">
+                        <input type="file" name="image" required class="w-full">
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Contenido embebido *</p>

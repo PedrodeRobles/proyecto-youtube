@@ -47,7 +47,7 @@ class VideoControllerTest extends TestCase
             ->assertStatus(200)
             ->assertSee([
                 $video->title,
-                $video->iframe,
+                $video->get_image,
             ]);
     }
 
@@ -77,8 +77,8 @@ class VideoControllerTest extends TestCase
     {
         $data = [
             'title'   => $this->faker->sentence(),
+            'image'   => $this->faker->url(),
             'iframe'  => $this->faker->url(),
-            'description' => $this->faker->text(500),
         ];
 
         $user = User::factory()->create();
@@ -109,8 +109,8 @@ class VideoControllerTest extends TestCase
 
         $data = [
             'title'   => $this->faker->sentence(),
+            'image'   => $this->faker->url(),
             'iframe'  => $this->faker->url(),
-            'description' => $this->faker->text(500),
         ];
 
 

@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->bigInteger('user_id')->unsigned();
 
             $table->string('title');
-            $table->string('foto');
+            $table->string('image');
             $table->text('iframe');
             //$table->text('description')->nullable();
 

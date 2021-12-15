@@ -24,10 +24,11 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'iframe' => 'required',
-        // ]);
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'iframe' => 'required',
+        ]);
 
         //salvar
         $video = Video::create([
@@ -35,8 +36,8 @@ class VideoController extends Controller
         ] + $request->all());
 
         //imagen
-        if ($request->hasFile('foto')) {
-            $video->foto = $request->file('foto')->store('videos', 'public');
+        if ($request->hasFile('image')) {
+            $video->image = $request->file('image')->store('videos', 'public');
             $video->save();
         }
 
