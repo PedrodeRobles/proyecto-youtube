@@ -6,6 +6,7 @@ use App\Models\Video;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\VideoRequest;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
@@ -23,13 +24,23 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'iframe' => 'required',
-        ]);
+        // $request->validate([
+        //     'title' => 'required',
+        //     'iframe' => 'required',
+        // ]);
 
-        $request->user()->videos()->create($request->all());
+        //salvar
+        $video = Video::create([
+            'user_id' => auth()->user()->id,
+        ] + $request->all());
 
+        //imagen
+        if ($request->hasFile('foto')) {
+            $video->foto = $request->file('foto')->store('videos', 'public');
+            $video->save();
+        }
+
+        // $request->user()->videos()->create($request->all());
         return redirect()->route('videos.index');
     }
 

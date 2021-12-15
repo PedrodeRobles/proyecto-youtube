@@ -41,7 +41,7 @@
             @forelse ($videos as $video)
                     <div class="rounded-md border-2 border-gray-800 mx-auto mb-10 hover:bg-gray-800">
                         <a href="{{ route('videos.show', $video) }}">
-                            <img src="/img/descarga.jpg" class="w-80 h-44 object-cover">
+                            <img src="{{ $video->get_foto }}" class="w-80 h-44 object-cover">
                             <div class="text-white font-bold p-2">
                                 {{ $video->title }}
                             </div>

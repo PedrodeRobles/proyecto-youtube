@@ -12,13 +12,21 @@ class Video extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'title',
+        'foto',
         'iframe',
-        'description',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getGetFotoAttribute()
+    {
+        if ($this->foto) {
+            return url("storage/$this->foto");
+        }
     }
 }
