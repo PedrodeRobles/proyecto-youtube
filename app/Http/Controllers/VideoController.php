@@ -77,13 +77,13 @@ class VideoController extends Controller
 
         $video->update($request->all());
 
-        if ( $request->hasFile('image') ) {
+        if ($request->hasFile('image')) {
             Storage::disk('public')->delete($video->image);
             $video->image = $request->file('image')->store('videos', 'public');
             $video->save();
         }
 
-        return redirect()->route('videos.edit', $video);
+        return redirect()->route('videos.index');
     }
 
     public function destroy(Video $video, Request $request)
