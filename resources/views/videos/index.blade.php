@@ -30,15 +30,16 @@
                 {{-- <p class="text-white">{{ $video->user->name }}</p> --}}
             </div>
             <div>
-                <button class="py-2 px-4 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg">
+                <button class="py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg">
                     <a href="{{ route('videos.create') }}">Subir video</a>
                 </button>
             </div>
         </div>
             
         {{-- Videos subidos --}}
-        <div class="grid grid-cols-4">
+        
             @forelse ($videos as $video)
+                <div class="grid grid-cols-4">
                     <div class="rounded-md border-2 border-gray-800 mx-auto mb-10 hover:bg-gray-800">
                         <a href="{{ route('videos.show', $video) }}">
                             <img src="{{ $video->get_image }}" class="w-80 h-44 object-cover">
@@ -46,10 +47,20 @@
                                 {{ $video->title }}
                             </div>
                         </a>
+                        <div class="flex justify-around py-4">
+                            <a href="{{ route('videos.edit', $video) }}" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md">Editar</a>
+                            <form action="{{ route('videos.destroy', $video) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('¿Desea eliminar este video?')" class="py-2 px-4 bg-red-600 hover:bg-red-500 text-white rounded-md">Eliminar</button>
+                            </form>
+                        </div>
                     </div>
+                </div>
             @empty
-                <p>No hay videos subidos</p>
+                <div class="flex justify-center">
+                    <p class="text-white font-bold text-xl">No hay videos subidos</p>
+                </div>
             @endforelse
-        </div>
     </body>
 </html>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\VideoRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -76,6 +77,12 @@ class VideoController extends Controller
 
         $video->update($request->all());
 
+        if ( $request->hasFile('image') ) {
+            Storage::disk('public')->delete($video->image);
+            $video->image = $request->file('image')->store('videos', 'public');
+            $video->save();
+        }
+
         return redirect()->route('videos.edit', $video);
     }
 
@@ -85,6 +92,7 @@ class VideoController extends Controller
             abort(403);
         }
 
+        Storage::disk('public')->delete($video->image);
         $video->delete();
 
         return redirect()->route('videos.index');
