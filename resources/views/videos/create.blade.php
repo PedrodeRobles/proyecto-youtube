@@ -17,11 +17,16 @@
                 </a>
             </div>
             <input class="w-96 py-1 bg-gray-800 text-white" type="text" placeholder="Search">
-            <img class="rounded-full w-8 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
+            <a href="{{ route('videos.index') }}">
+                <img class="rounded-full w-8 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
+            </a>
         </div>
     </header>
     <body class="bg-gray-900">
         <div class="w-1/2 m-auto mt-12 bg-gray-800 border-2 border-gray-400 rounded-lg">
+            <div class="flex justify-center bg-gray-700 rounded-t-lg">
+                <h2 class="text-white text-lg font-bold py-4">Subir video</h2>
+            </div>
             <form action="{{ route('videos.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="w-10/12 mx-10">                        
@@ -31,7 +36,7 @@
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Miniatura *</p>
-                        <input type="file" name="image" required accept="image/*" class="w-full">
+                        <input type="file" name="image" required accept="image/*" class="w-full text-white">
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Contenido embebido *</p>

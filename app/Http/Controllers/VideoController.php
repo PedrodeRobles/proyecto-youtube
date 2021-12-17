@@ -46,14 +46,14 @@ class VideoController extends Controller
         return redirect()->route('videos.index');
     }
 
-    public function show(Video $video, Request $request)
-    {
-        if ($request->user()->id != $video->user_id) {
-            abort(403);
-        }
+    // public function show(Video $video, Request $request)
+    // {
+    //     if ($request->user()->id != $video->user_id) {
+    //         abort(403);
+    //     }
 
-        return view('videos.show', $video);
-    }
+    //     return view('videos.show', $video);
+    // }
 
     public function edit(Video $video, Request $request)
     {

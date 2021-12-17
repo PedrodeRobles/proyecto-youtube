@@ -13,4 +13,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('videos', VideoController::class)
+    ->except('show')
     ->middleware('auth');

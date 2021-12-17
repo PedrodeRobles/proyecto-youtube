@@ -17,7 +17,9 @@
                 </a>
             </div>
             <input class="w-96 py-1 bg-gray-800 text-white" type="text" placeholder="Search">
-            <img class="rounded-full w-8 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
+            <a href="{{ route('videos.index') }}">
+                <img class="rounded-full w-8 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
+            </a>
         </div>
     </header>
     <body class="bg-gray-900">
