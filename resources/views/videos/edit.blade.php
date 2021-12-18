@@ -37,7 +37,7 @@
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Miniatura *</p>
-                        <input type="file" name="image" required accept="image/*" class="w-full">
+                        <input type="file" name="image" required accept="image/*" class="w-full text-white">
                     </div>
                     <div class="pt-6">
                         <p class="text-white">Contenido embebido *</p>
