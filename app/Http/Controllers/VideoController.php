@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         return view('videos.index', [
-            'videos' => $request->user()->videos
+            'videos' => auth()->user()->videos
         ]);
     }
 
@@ -25,12 +25,6 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'image' => 'required',
-        //     'iframe' => 'required',
-        // ]);
-
         //salvar
         $video = Video::create([
             'user_id' => auth()->user()->id,
@@ -42,7 +36,6 @@ class VideoController extends Controller
             $video->save();
         }
 
-        // $request->user()->videos()->create($request->all());
         return redirect()->route('videos.index');
     }
 
@@ -55,25 +48,16 @@ class VideoController extends Controller
     //     return view('videos.show', $video);
     // }
 
-    public function edit(Video $video, Request $request)
+    public function edit(Video $video)
     {
-        if ($request->user()->id != $video->user_id) {
-            abort(403);
-        }
+        $this->authorize('pass', $video);
 
         return view('videos.edit', compact('video'));
     }
 
     public function update(VideoRequest $request, Video $video)
     {
-        // $request->validate([
-        //     'title' => 'required',
-        //     'iframe' => 'required',
-        // ]);
-
-        if ($request->user()->id != $video->user_id) {
-            abort(403);
-        }
+        $this->authorize('pass', $video);
 
         $video->update($request->all());
 
@@ -86,11 +70,9 @@ class VideoController extends Controller
         return redirect()->route('videos.index');
     }
 
-    public function destroy(Video $video, Request $request)
+    public function destroy(Video $video)
     {
-        if ($request->user()->id != $video->user_id) {
-            abort(403);
-        }
+        $this->authorize('pass', $video);
 
         Storage::disk('public')->delete($video->image);
         $video->delete();
