@@ -39,16 +39,13 @@
         </div>
             
         {{-- Videos subidos --}}
-        
+        <div class="grid grid-cols-4">
             @forelse ($videos as $video)
-                <div class="grid grid-cols-4">
                     <div class="rounded-md border-2 border-gray-800 mx-auto mb-10 hover:bg-gray-800">
-                        <a href="{{ route('videos.show', $video) }}">
-                            <img src="{{ $video->get_image }}" class="w-80 h-44 object-cover">
-                            <div class="text-white font-bold p-2">
-                                {{ $video->title }}
-                            </div>
-                        </a>
+                        <img src="{{ $video->get_image }}" class="w-80 h-44 object-cover">
+                        <div class="text-white font-bold p-2">
+                            {{ $video->title }}
+                        </div>
                         <div class="flex justify-around py-4">
                             <a href="{{ route('videos.edit', $video) }}" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md">Editar</a>
                             <form action="{{ route('videos.destroy', $video) }}" method="POST">
@@ -58,11 +55,11 @@
                             </form>
                         </div>
                     </div>
-                </div>
             @empty
                 <div class="flex justify-center">
                     <p class="text-white font-bold text-xl">No hay videos subidos</p>
                 </div>
             @endforelse
+        </div>
     </body>
 </html>

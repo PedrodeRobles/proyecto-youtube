@@ -16,12 +16,12 @@ class VideoControllerTest extends TestCase
     public function test_guest()
     {
         $this->get('videos')->assertRedirect('login');         // index
-        $this->get('videos/1')->assertRedirect('login');       // show 
+        //$this->get('videos/1')->assertRedirect('login');       // show 
         $this->get('videos/1/edit')->assertRedirect('login');  // edit
         $this->put('videos/1')->assertRedirect('login');       // update
         $this->delete('videos/1')->assertRedirect('login');    // destroy 
         $this->get('videos/create')->assertRedirect('login');  // create
-        $this->post('videos', [])->assertRedirect('login');    // sotore
+        $this->post('videos', [])->assertRedirect('login');    // store
     }
 
     public function test_index_empty()
@@ -143,7 +143,7 @@ class VideoControllerTest extends TestCase
         $data = [
             'title'   => $this->faker->sentence(),
             'iframe'  => $this->faker->url(),
-            'description' => $this->faker->text(500),
+            'image'   => $this->faker->url(),
         ];
 
 

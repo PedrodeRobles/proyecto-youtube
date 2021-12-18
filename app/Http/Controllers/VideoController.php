@@ -23,13 +23,13 @@ class VideoController extends Controller
         return view('videos.create');
     }
 
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'iframe' => 'required',
-        ]);
+        // $request->validate([
+        //     'title' => 'required',
+        //     'image' => 'required',
+        //     'iframe' => 'required',
+        // ]);
 
         //salvar
         $video = Video::create([
@@ -64,12 +64,12 @@ class VideoController extends Controller
         return view('videos.edit', compact('video'));
     }
 
-    public function update(Request $request, Video $video)
+    public function update(VideoRequest $request, Video $video)
     {
-        $request->validate([
-            'title' => 'required',
-            'iframe' => 'required',
-        ]);
+        // $request->validate([
+        //     'title' => 'required',
+        //     'iframe' => 'required',
+        // ]);
 
         if ($request->user()->id != $video->user_id) {
             abort(403);
