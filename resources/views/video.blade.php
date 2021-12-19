@@ -23,7 +23,7 @@
     </header>
     <body class="bg-gray-900">
         <div class="p-10 w-full h-96">
-            <video src="{{ $video->get_iframe }}" controls></video>
+            <video src="{{ $video->get_video }}" controls></video>
         </div>
         
         <p class="text-white">

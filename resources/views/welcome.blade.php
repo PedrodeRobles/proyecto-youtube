@@ -35,16 +35,16 @@
             {{-- Videos subidos --}}
             <div class="grid grid-cols-5 gap-2 pl-16 pr-4 pt-16">
                 @forelse ($videos as $video)
-                        <div class="rounded-md mx-auto mb-8 hover:bg-gray-800">
+                        <div class="rounded-md mx-auto mb-8 hover:bg-gray-800 max-w-md">
                             <a href="{{ route('video', $video) }}">
                                 <img src="{{ $video->get_image }}" class="w-80 h-40 object-cover border-2 border-gray-800">
                                 <div class="flex pt-2">
-                                    <div class="">
-                                        <img class="rounded-full w-8" src="/img/perfil.jpg" alt="Foto de perfil">
+                                    <div class="w-8">
+                                        <img class="rounded-full w-8 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
                                     </div>
-                                    <div class="pl-2">
+                                    <div class="ml-2">
                                         <div class="text-white text-md">
-                                            {{ $video->title }}
+                                            {{ $video->get_title }}
                                         </div>
                                         <div class="text-gray-400 hover:text-white text-sm">
                                             <a href="#">

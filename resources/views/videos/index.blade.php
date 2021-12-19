@@ -12,7 +12,7 @@
         <div class="bg-gray-900 flex items-center justify-between  w-full h-12">
             <div class="flex items-center ml-2">
                 <img class="w-6" src="/img/menu-burger.png" alt="">
-                <a href="{{ url('dashboard') }}">
+                <a href="{{ asset('/') }}">
                     <img class="w-20 ml-4" src='/img/youtube.png' alt="youtube logo">
                 </a>
             </div>

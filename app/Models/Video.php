@@ -15,12 +15,17 @@ class Video extends Model
         'user_id',
         'title',
         'image',
-        'iframe',
+        'video',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getGetTitleAttribute()
+    {
+        return substr($this->title, 0,62);
     }
 
     public function getGetImageAttribute()
@@ -30,10 +35,10 @@ class Video extends Model
         }
     }
 
-    public function getGetIframeAttribute()
+    public function getGetVideoAttribute()
     {
-        if ($this->iframe) {
-            return url("storage/$this->iframe");
+        if ($this->video) {
+            return url("storage/$this->video");
         }
     }
 }

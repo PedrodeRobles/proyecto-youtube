@@ -26,7 +26,7 @@ class VideoRequest extends FormRequest
         return [
             'title' => 'required',
             'image' => 'required',
-            'iframe' => 'required',
+            'video' => 'required',
         ];
     }
 }

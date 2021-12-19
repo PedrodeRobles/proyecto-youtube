@@ -32,13 +32,13 @@ class VideoController extends Controller
 
         //imagen
         if ($request->hasFile('image')) {
-            $video->image = $request->file('image')->store('videos', 'public');
+            $video->image = $request->file('image')->store('images', 'public');
             $video->save();
         }
 
         //video
-        if ($request->hasFile('iframe')) {
-            $video->iframe = $request->file('iframe')->store('videos2', 'public');
+        if ($request->hasFile('video')) {
+            $video->video = $request->file('video')->store('videos', 'public');
             $video->save();
         }
 
@@ -58,9 +58,17 @@ class VideoController extends Controller
 
         $video->update($request->all());
 
-        if ($request->hasFile('image')) {
+        //image
+        if ($request->file('image')) {
             Storage::disk('public')->delete($video->image);
-            $video->image = $request->file('image')->store('videos', 'public');
+            $video->image = $request->file('image')->store('images', 'public');
+            $video->save();
+        }
+
+        //video
+        if ($request->file('video')) {
+            Storage::disk('public')->delete($video->video);
+            $video->video = $request->file('video')->store('videos', 'public');
             $video->save();
         }
 
@@ -72,6 +80,7 @@ class VideoController extends Controller
         $this->authorize('pass', $video);
 
         Storage::disk('public')->delete($video->image);
+        Storage::disk('public')->delete($video->video);
         $video->delete();
 
         return redirect()->route('videos.index');
