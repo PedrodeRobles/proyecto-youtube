@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Video;
-use App\Models\User;
 
 class PageController extends Controller
 {
@@ -17,6 +16,9 @@ class PageController extends Controller
 
     public function show(Video $video)
     {
-        return view('video', ['video' => $video]);
+        return view('video', [
+            'video' => $video,
+            'videos' => Video::latest()->get()
+        ]);
     }
 }
