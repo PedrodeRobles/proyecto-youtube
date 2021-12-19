@@ -39,8 +39,8 @@
                         <input type="file" name="image" required accept="image/*" class="w-full text-white">
                     </div>
                     <div class="pt-6">
-                        <p class="text-white">Contenido embebido *</p>
-                        <textarea name="iframe" rows="4" class="w-full"></textarea>
+                        <p class="text-white">Seleccionar video *</p>
+                        <input type="file" name="iframe" required class="w-full text-white">
                     </div>
                     <div class="pb-10 pt-6">
                         <button class="mt-4 px-4 py-2 font-bold text-white bg-green-600 hover:bg-green-500 rounded-md">

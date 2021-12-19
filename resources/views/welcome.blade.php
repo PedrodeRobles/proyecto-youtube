@@ -36,25 +36,27 @@
             <div class="grid grid-cols-5 gap-2 pl-16 pr-4 pt-16">
                 @forelse ($videos as $video)
                         <div class="rounded-md mx-auto mb-8 hover:bg-gray-800">
-                            <img src="{{ $video->get_image }}" class="w-80 h-40 object-cover border-2 border-gray-800">
-                            <div class="flex pt-2">
-                                <div class="">
-                                    <img class="rounded-full w-8" src="/img/perfil.jpg" alt="Foto de perfil">
+                            <a href="{{ route('video', $video) }}">
+                                <img src="{{ $video->get_image }}" class="w-80 h-40 object-cover border-2 border-gray-800">
+                                <div class="flex pt-2">
+                                    <div class="">
+                                        <img class="rounded-full w-8" src="/img/perfil.jpg" alt="Foto de perfil">
+                                    </div>
+                                    <div class="pl-2">
+                                        <div class="text-white text-md">
+                                            {{ $video->title }}
+                                        </div>
+                                        <div class="text-gray-400 hover:text-white text-sm">
+                                            <a href="#">
+                                                {{ $video->user->name }}
+                                            </a>
+                                        </div>
+                                        <div class="text-gray-400 text-xs">
+                                            {{ $video->created_at->diffForHumans() }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="pl-2">
-                                    <div class="text-white text-md">
-                                        {{ $video->title }}
-                                    </div>
-                                    <div class="text-gray-400 hover:text-white text-sm">
-                                        <a href="#">
-                                            {{ $video->user->name }}
-                                        </a>
-                                    </div>
-                                    <div class="text-gray-400 text-xs">
-                                        {{ $video->created_at->diffForHumans() }}
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                 @empty
                     <div class="flex justify-center">

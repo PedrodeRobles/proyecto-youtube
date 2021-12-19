@@ -36,17 +36,14 @@ class VideoController extends Controller
             $video->save();
         }
 
+        //video
+        if ($request->hasFile('iframe')) {
+            $video->iframe = $request->file('iframe')->store('videos2', 'public');
+            $video->save();
+        }
+
         return redirect()->route('videos.index');
     }
-
-    // public function show(Video $video, Request $request)
-    // {
-    //     if ($request->user()->id != $video->user_id) {
-    //         abort(403);
-    //     }
-
-    //     return view('videos.show', $video);
-    // }
 
     public function edit(Video $video)
     {

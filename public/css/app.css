@@ -1254,6 +1254,9 @@ select {
 .h-40 {
 	height: 10rem;
 }
+.h-96 {
+	height: 24rem;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1613,6 +1616,9 @@ select {
 }
 .p-6 {
 	padding: 1.5rem;
+}
+.p-10 {
+	padding: 2.5rem;
 }
 .px-4 {
 	padding-left: 1rem;

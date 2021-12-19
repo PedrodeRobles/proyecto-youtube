@@ -29,4 +29,11 @@ class Video extends Model
             return url("storage/$this->image");
         }
     }
+
+    public function getGetIframeAttribute()
+    {
+        if ($this->iframe) {
+            return url("storage/$this->iframe");
+        }
+    }
 }

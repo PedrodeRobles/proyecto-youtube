@@ -14,4 +14,9 @@ class PageController extends Controller
             'videos' => Video::latest()->get()
         ]);
     }
+
+    public function show(Video $video)
+    {
+        return view('video', ['video' => $video]);
+    }
 }
