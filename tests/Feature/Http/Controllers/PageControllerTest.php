@@ -18,7 +18,7 @@ class PageControllerTest extends TestCase
         $this
             ->get('/')
             ->assertStatus(200)
-            ->assertSee($video->title)
+            ->assertSee($video->get_title)
             ->assertSee($video->get_image);
     }
 
@@ -29,9 +29,11 @@ class PageControllerTest extends TestCase
         $this
             ->get("video/$video->id")
             ->assertStatus(200)
-            ->assertSee($video->iframe)
-            ->assertSee($video->title)
-            ->assertSee($video->iframe)
-            ->assertSee($video->created_at);
+            ->assertSee([
+                $video->video,
+                $video->title,
+                $video->created_at->format('M d Y'),
+                $video->user->name
+            ]);
     }
 }

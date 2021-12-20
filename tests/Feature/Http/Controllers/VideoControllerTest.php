@@ -16,7 +16,6 @@ class VideoControllerTest extends TestCase
     public function test_guest()
     {
         $this->get('videos')->assertRedirect('login');         // index
-        //$this->get('videos/1')->assertRedirect('login');       // show 
         $this->get('videos/1/edit')->assertRedirect('login');  // edit
         $this->put('videos/1')->assertRedirect('login');       // update
         $this->delete('videos/1')->assertRedirect('login');    // destroy 
@@ -79,7 +78,8 @@ class VideoControllerTest extends TestCase
         $data = [
             'title'   => $this->faker->sentence(),
             'image'   => $this->faker->url(),
-            'iframe'  => $this->faker->url(),
+            'video'  => $this->faker->url(),
+            'description' => $this->faker->text(600),
         ];
 
         $user = User::factory()->create();
@@ -100,7 +100,7 @@ class VideoControllerTest extends TestCase
             ->actingAs($user)
             ->post('videos', [])
             ->assertStatus(302)
-            ->assertSessionHasErrors('title', 'iframe');
+            ->assertSessionHasErrors('title','video');
     }
 
     public function test_update()
@@ -111,7 +111,8 @@ class VideoControllerTest extends TestCase
         $data = [
             'title'   => $this->faker->sentence(),
             'image'   => $this->faker->url(),
-            'iframe'  => $this->faker->url(),
+            'video'   => $this->faker->url(),
+            'description' => $this->faker->text(600),
         ];
 
 
@@ -142,8 +143,9 @@ class VideoControllerTest extends TestCase
 
         $data = [
             'title'   => $this->faker->sentence(),
-            'iframe'  => $this->faker->url(),
+            'video'  => $this->faker->url(),
             'image'   => $this->faker->url(),
+            'description' => $this->faker->text(600),
         ];
 
 

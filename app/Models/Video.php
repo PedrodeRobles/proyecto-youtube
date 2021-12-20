@@ -16,6 +16,7 @@ class Video extends Model
         'title',
         'image',
         'video',
+        'description',
     ];
 
     public function user()
