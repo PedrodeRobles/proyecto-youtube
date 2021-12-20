@@ -12,6 +12,7 @@ class Comentary extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'video_id',
         'comentary'
     ];

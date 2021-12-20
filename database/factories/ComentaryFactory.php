@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ComentaryFactory extends Factory
@@ -15,8 +16,9 @@ class ComentaryFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'   => User::factory(),
-            'comentary' => $this->faker->text(200),
+            'user_id'    => User::factory(),
+            'video_id'   => Video::factory(),
+            'comentary'  => $this->faker->text(200),
         ];
     }
 }

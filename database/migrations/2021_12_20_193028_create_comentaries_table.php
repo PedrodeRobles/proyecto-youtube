@@ -17,13 +17,14 @@ class CreateComentariesTable extends Migration
             $table->id();
 
             $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('video_id')->unsigned();
             
-            $table->text('comentary')->nullable();
+            $table->text('comentary');
 
             $table->timestamps();
 
-            //$table->foreign('video_id')->references('id')->on('videos');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('video_id')->references('id')->on('videos');
         });
     }
 

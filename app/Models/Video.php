@@ -25,10 +25,10 @@ class Video extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function comentaries()
-    // {
-    //     return $this->hasMany(Comentary::class);
-    // }
+    public function comentaries()
+    {
+        return $this->hasMany(Comentary::class);
+    }
 
     public function getGetTitleAttribute()
     {

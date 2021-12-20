@@ -13,17 +13,17 @@ class ComentaryTest extends TestCase
 {
     use RefreshDatabase;
 
-    // public function test_belongs_to_video()
-    // {
-    //     $comentary = Comentary::factory()->create();
-
-    //     $this->assertInstanceOf(Video::class, $comentary->video);
-    // }
-
     public function test_belongs_to_user()
     {
         $comentary = Comentary::factory()->create();
 
         $this->assertInstanceOf(User::class, $comentary->user);
+    }
+
+    public function test_belongs_to_video()
+    {
+        $comentary = Comentary::factory()->create();
+
+        $this->assertInstanceOf(Video::class, $comentary->video);
     }
 }

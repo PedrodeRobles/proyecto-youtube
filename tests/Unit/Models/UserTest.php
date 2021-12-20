@@ -14,4 +14,11 @@ class UserTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $user->videos);
     }
+
+    public function test_has_many_comentaries()
+    {
+        $user = new User;
+
+        $this->assertInstanceOf(Collection::class, $user->comentaries);
+    }
 }
