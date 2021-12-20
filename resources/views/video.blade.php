@@ -10,7 +10,8 @@
     </head>
     <header>
         <div class="bg-gray-800 flex fixed items-center justify-between  w-full h-12">
-            <div class="flex items-center ml-8">
+            <div class="flex items-center">
+                <img src="/img/menu-burger.png" alt="Menu burger" class="w-6 ml-4" >
                 <a href="{{ asset('/') }}">
                     <img class="w-20 ml-4" src='/img/youtube.png' alt="youtube logo">
                 </a>
@@ -30,11 +31,14 @@
                     <h2 class="text-white text-lg">
                         {{ $video->title }}
                     </h2>
-                    <div class="text-gray-400 text-sm mt-2">
-                        {{ $video->created_at->format('d M Y')}}
+                    <div class="text-gray-400 text-sm pt-2 pb-4 border-b border-gray-700">
+                        {{ $video->created_at->format('M d Y')}}
                     </div>
-                    <div>
-                        <p class="text-white">{{ $video->user->name }}</p>
+                    <div class="flex pt-4">
+                        <div class="w-8">
+                            <img class="rounded-full w-8 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
+                        </div>
+                        <p class="text-white text-sm ml-3 ">{{ $video->user->name }}</p>
                     </div>
                 </div>
             </div>
