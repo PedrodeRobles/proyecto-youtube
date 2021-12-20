@@ -12,7 +12,7 @@
         <div class="bg-gray-900 flex items-center justify-between  w-full h-12">
             <div class="flex items-center ml-2">
                 <img class="w-6" src="/img/menu-burger.png" alt="">
-                <a href="{{ url('dashboard') }}">
+                <a href="{{ asset('/') }}">
                     <img class="w-20 ml-4" src='/img/youtube.png' alt="youtube logo">
                 </a>
             </div>
@@ -42,6 +42,10 @@
                     <div class="pt-6">
                         <p class="text-white">Seleccionar video *</p>
                         <input type="file" name="video" required accept="video/*" class="w-full text-white">
+                    </div>
+                    <div class="pt-6">
+                        <p class="text-white">Descripción</p>
+                        <textarea name="description" rows="5" class="w-full">{{ $video->description }}</textarea>
                     </div>
                     <div class="pb-10 pt-6">
                         <button class="mt-4 px-4 py-2 font-bold text-white bg-green-600 hover:bg-green-500 rounded-md">

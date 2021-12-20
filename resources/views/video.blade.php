@@ -31,14 +31,19 @@
                     <h2 class="text-white text-lg">
                         {{ $video->title }}
                     </h2>
-                    <div class="text-gray-400 text-sm pt-2 pb-4 border-b border-gray-700">
+                    <div class="text-gray-400 text-sm pt-2 pb-4 ">
                         {{ $video->created_at->format('M d Y')}}
                     </div>
-                    <div class="flex pt-4">
-                        <div class="w-8">
-                            <img class="rounded-full w-8 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
+                    <div class="border-t border-gray-700 border-b border-gray-700 mb-6">
+                        <div class="flex pt-4">
+                            <div class="w-8">
+                                <img class="rounded-full w-8 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">
+                            </div>
+                            <div class="text-white ml-3">
+                                <p class="text-sm">{{ $video->user->name }}</p>
+                            </div>
                         </div>
-                        <p class="text-white text-sm ml-3 ">{{ $video->user->name }}</p>
+                        <p class="w-2/3 pl-11 mt-2 pb-5 text-xs text-white">{{ $video->description }}</p>
                     </div>
                 </div>
             </div>

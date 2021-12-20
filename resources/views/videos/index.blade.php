@@ -43,7 +43,7 @@
             @forelse ($videos as $video)
                     <div class="rounded-md border-2 border-gray-800 mx-auto mb-10 hover:bg-gray-800">
                         <img src="{{ $video->get_image }}" class="w-80 h-44 object-cover">
-                        <div class="text-white font-bold p-2">
+                        <div class="text-white font-bold p-2 w-80">
                             {{ $video->title }}
                         </div>
                         <div class="flex justify-around py-4">

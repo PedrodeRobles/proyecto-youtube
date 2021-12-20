@@ -33,7 +33,8 @@ class PageControllerTest extends TestCase
                 $video->video,
                 $video->title,
                 $video->created_at->format('M d Y'),
-                $video->user->name
+                $video->user->name,
+                $video->description,
             ]);
     }
 }
