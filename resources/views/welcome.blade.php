@@ -9,16 +9,22 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <header>
-        <div class="bg-gray-800 flex fixed items-center justify-between  w-full h-12">
+        <div class="bg-gray-800 flex fixed justify-between  w-full h-12">
             <div class="flex items-center ml-8">
                 <a href="{{ asset('/') }}">
                     <img class="w-20 ml-4" src='/img/youtube.png' alt="youtube logo">
                 </a>
             </div>
-            <input class="w-96 py-1 bg-gray-800 text-white" type="text" placeholder="Search">
-            <a href="{{ route('videos.index') }}">
-                <img class="rounded-full w-8 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
-            </a>
+            <div class="py-2">
+                <input class="w-96 py-1 text-white bg-gray-900" type="text" placeholder="Search">
+            </div>
+            <div id="item" class="mt-2">
+                <img class="rounded-full w-8 ml-6 mr-6" src="/img/perfil.jpg" alt="Foto de perfil">
+                    <ul id="desple" class="text-white bg-gray-800 border border-gray-400 ">
+                        <li><a href="{{ url('dashboard') }}">Cuenta</a></li>
+                        <li><a href="{{ route('videos.index') }}">Mis videos</a></li>
+                    </ul>
+            </div>
         </div>
     </header>
     <body class="bg-gray-900">
@@ -35,9 +41,9 @@
             {{-- Videos subidos --}}
             <div class="grid grid-cols-5 gap-2 pl-16 pr-4 pt-16">
                 @forelse ($videos as $video)
-                        <div class="rounded-md mx-auto mb-8 hover:bg-gray-800 max-w-md">
+                        <div class="rounded-md mx-auto mb-8 max-w-md">
                             <a href="{{ route('video', $video) }}">
-                                <img src="{{ $video->get_image }}" class="w-80 h-40 object-cover border-2 border-gray-800">
+                                <img src="{{ $video->get_image }}" class="w-80 h-40 object-cover">
                                 <div class="flex pt-2">
                                     <div class="w-8">
                                         <img class="rounded-full w-8 mr-2" src="/img/perfil.jpg" alt="Foto de perfil">

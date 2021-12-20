@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
+use App\Models\Comentary;
 
 class Video extends Model
 {
@@ -23,6 +24,11 @@ class Video extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function comentaries()
+    // {
+    //     return $this->hasMany(Comentary::class);
+    // }
 
     public function getGetTitleAttribute()
     {
